@@ -18,6 +18,10 @@ class Todo(db.Model):
 def home(name):
     return f"Hello {name}!"
 
+@app.route("/admin/")
+def admin():
+    return redirect(url_for("home", name="Admin!"))
+
 
 @app.route('/')
 def index():
