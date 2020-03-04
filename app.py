@@ -8,10 +8,10 @@ db = SQLAlchemy(app)
 
 @app.route('/')
 def index():
-    return render_template('map.html')
+    return render_template('index.html')
 
 
-@app.route("/<name>")
+@app.route("/sd/<name>")
 def home(name):
     return f"Hello {name}!"
 
