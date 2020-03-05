@@ -11,30 +11,5 @@ def index():
     return render_template('index.html')
 
 
-@app.route("/sd/<name>")
-def home(name):
-    return f"Hello {name}!"
-
-@app.route("/admin/")
-def admin():
-    return redirect(url_for("home", name="Admin!"))
-
-
-@app.route('/sdfsfd')
-def indexx():
-    if request.method == 'POST':
-        task_content = request.form['content']
-        new_task = Todo(content=task_content)
-
-        try:
-            db.session.add(new_task)
-            db.session.commit()
-            return redirect('/')
-        except:
-            return "There was a problem adding your task"
-    else:
-        tasks = Todo.querry.order_by(Todo.date_created).all()
-        return render_template('index.html', tasks=tasks)
-
 if __name__ == "__main__":
     app.run(debug=True)
