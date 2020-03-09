@@ -1,11 +1,10 @@
 from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-from wtforms import Form, BooleanField, StringField, validators
-import db
+import models
 
 app = Flask(__name__)    #reference to this file
-
+app.config.from_object("config.DevelopmentConfig")
 db = SQLAlchemy(app)
 
 @app.route('/')
